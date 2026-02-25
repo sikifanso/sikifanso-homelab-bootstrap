@@ -9,7 +9,7 @@ spec:
         repoURL: /local-gitops
         revision: HEAD
         files:
-          - path: "apps/*/config.yaml"
+          - path: "apps/coordinates/*.yaml"
   template:
     metadata:
       name: "{{name}}"
@@ -18,12 +18,17 @@ spec:
         - resources-finalizer.argocd.argoproj.io
     spec:
       project: default
-      source:
-        repoURL: "{{repoURL}}"
-        chart: "{{chart}}"
-        targetRevision: "{{targetRevision}}"
-        helm:
-          releaseName: "{{name}}"
+      sources:
+        - repoURL: "{{repoURL}}"
+          chart: "{{chart}}"
+          targetRevision: "{{targetRevision}}"
+          helm:
+            releaseName: "{{name}}"
+            valueFiles:
+              - $values/apps/values/{{name}}.yaml
+        - repoURL: /local-gitops
+          targetRevision: HEAD
+          ref: values
       destination:
         server: https://kubernetes.default.svc
         namespace: "{{namespace}}"
