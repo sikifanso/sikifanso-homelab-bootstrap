@@ -6,7 +6,6 @@ replicaCount: 1
 # Set this to your externally reachable domain for proper functionality
 domain: "https://vaultwarden.local"
 
-# Admin token for the /admin interface - change before deploying
 # CHANGE BEFORE DEPLOYING
 adminToken: ""
 
@@ -24,7 +23,7 @@ resources:
     memory: 256Mi
     cpu: 200m
 
-# Disable signup after initial user creation for security
+# Set to false after initial user creation for security
 signupsAllowed: true
 
 ingress:

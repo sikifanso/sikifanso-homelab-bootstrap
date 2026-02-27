@@ -3,6 +3,6 @@ category: monitoring
 description: Kubernetes monitoring stack with Prometheus, Alertmanager, and Grafana
 repoURL: https://prometheus-community.github.io/helm-charts
 chart: kube-prometheus-stack
-targetRevision: ">=80.0.0 <85.0.0"
+targetRevision: ">=84.0.0 <85.0.0"
 namespace: monitoring
 enabled: false

@@ -29,6 +29,7 @@ prometheus:
         cpu: 200m
       limits:
         memory: 2Gi
+        cpu: 500m
 
 grafana:
   enabled: true
@@ -44,6 +45,7 @@ grafana:
       cpu: 50m
     limits:
       memory: 512Mi
+      cpu: 200m
 
 prometheusOperator:
   resources:

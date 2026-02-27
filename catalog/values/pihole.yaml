@@ -3,7 +3,6 @@
 
 replicaCount: 1
 
-# Admin web UI password
 # CHANGE BEFORE DEPLOYING
 adminPassword: changeme
 
