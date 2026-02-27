@@ -1,0 +1,27 @@
+# Helm values for mailpit (jouve/mailpit)
+# Homelab defaults: single replica, no persistence needed (in-memory mail store)
+# SMTP on port 1025, web UI on port 8025
+
+replicaCount: 1
+
+resources:
+  requests:
+    memory: 32Mi
+    cpu: 10m
+  limits:
+    memory: 128Mi
+    cpu: 100m
+
+# SMTP service
+smtp:
+  port: 1025
+
+# Web UI service
+ui:
+  port: 8025
+
+service:
+  type: ClusterIP
+
+ingress:
+  enabled: false

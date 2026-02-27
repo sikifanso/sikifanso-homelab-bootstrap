@@ -1,0 +1,24 @@
+# Helm values for plex (plex-media-server)
+# Homelab defaults: single replica, persistence for config, claim token required
+
+replicaCount: 1
+
+# Set your Plex claim token from https://www.plex.tv/claim/
+claimSecret: ""
+
+pms:
+  storage:
+    size: 20Gi
+    accessMode: ReadWriteOnce
+
+resources:
+  requests:
+    memory: 512Mi
+    cpu: 200m
+  limits:
+    memory: 4Gi
+    cpu: "4"
+
+service:
+  type: ClusterIP
+  port: 32400

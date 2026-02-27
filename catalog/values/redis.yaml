@@ -1,0 +1,31 @@
+# Helm values for valkey (Valkey chart — Redis-compatible)
+# Homelab defaults: standalone mode, single replica, persistence enabled, modest resources
+
+architecture: standalone
+
+auth:
+  enabled: true
+  # CHANGE BEFORE DEPLOYING
+  password: changeme
+
+primary:
+  replicaCount: 1
+  persistence:
+    enabled: true
+    size: 2Gi
+    accessModes:
+      - ReadWriteOnce
+  resources:
+    requests:
+      memory: 64Mi
+      cpu: 50m
+    limits:
+      memory: 256Mi
+      cpu: 500m
+
+replica:
+  replicaCount: 0
+
+# Disable metrics sidecar by default
+metrics:
+  enabled: false

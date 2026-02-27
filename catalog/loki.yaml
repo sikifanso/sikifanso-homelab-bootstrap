@@ -1,0 +1,8 @@
+name: loki
+category: monitoring
+description: Log aggregation system designed to store and query logs from applications
+repoURL: https://grafana.github.io/helm-charts
+chart: loki
+targetRevision: ">=6.0.0 <7.0.0"
+namespace: monitoring
+enabled: false

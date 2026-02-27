@@ -1,0 +1,42 @@
+# Helm values for cloudnative-pg (CloudNativePG operator)
+# This installs the operator only. To provision a PostgreSQL database,
+# create a Cluster custom resource after the operator is running.
+# See: https://cloudnative-pg.io/documentation/current/quickstart/
+
+# Operator deployment config
+replicaCount: 1
+
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 100m
+  limits:
+    memory: 200Mi
+    cpu: 500m
+
+# Monitoring is disabled by default; enable if prometheus-stack is installed
+monitoring:
+  podMonitorEnabled: false
+
+# Webhook service
+webhook:
+  port: 9443
+
+# Example Cluster CRD to create after operator install (do not apply this directly
+# via Helm values — create a separate Cluster manifest):
+#
+# apiVersion: postgresql.cnpg.io/v1
+# kind: Cluster
+# metadata:
+#   name: homelab-pg
+#   namespace: dev
+# spec:
+#   instances: 1
+#   storage:
+#     size: 8Gi
+#   bootstrap:
+#     initdb:
+#       database: homelab
+#       owner: homelab
+#       secret:
+#         name: homelab-pg-secret  # create this Secret separately

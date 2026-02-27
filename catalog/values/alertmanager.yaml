@@ -1,0 +1,30 @@
+# Helm values for alertmanager
+# Homelab defaults: single replica, persistence enabled, minimal resources
+
+replicaCount: 1
+
+persistence:
+  enabled: true
+  size: 2Gi
+  accessModes:
+    - ReadWriteOnce
+
+resources:
+  requests:
+    memory: 32Mi
+    cpu: 10m
+  limits:
+    memory: 128Mi
+    cpu: 100m
+
+config:
+  global:
+    resolve_timeout: 5m
+  route:
+    group_by: ["alertname"]
+    group_wait: 30s
+    group_interval: 5m
+    repeat_interval: 12h
+    receiver: "null"
+  receivers:
+    - name: "null"

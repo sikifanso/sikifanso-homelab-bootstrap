@@ -1,0 +1,8 @@
+name: prowlarr
+category: media
+description: Indexer manager and proxy for Sonarr, Radarr, and other arr applications
+repoURL: https://bjw-s-labs.github.io/helm-charts
+chart: app-template
+targetRevision: ">=4.0.0 <5.0.0"
+namespace: media
+enabled: false

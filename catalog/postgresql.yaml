@@ -1,0 +1,8 @@
+name: postgresql
+category: dev
+description: CloudNativePG operator for PostgreSQL databases
+repoURL: https://cloudnative-pg.github.io/charts
+chart: cloudnative-pg
+targetRevision: ">=0.23.0 <1.0.0"
+namespace: cnpg-system
+enabled: false

@@ -1,0 +1,35 @@
+# Helm values for linkding (using bjw-s app-template chart)
+# See https://bjw-s.github.io/helm-charts/docs/app-template/ for full schema
+
+controllers:
+  linkding:
+    containers:
+      app:
+        image:
+          repository: sissbruecker/linkding
+          tag: "1.36.0"
+        env:
+          LD_SUPERUSER_NAME: admin
+          # CHANGE BEFORE DEPLOYING
+          LD_SUPERUSER_PASSWORD: changeme
+        resources:
+          requests:
+            memory: 64Mi
+            cpu: 25m
+          limits:
+            memory: 256Mi
+
+service:
+  app:
+    controller: linkding
+    ports:
+      http:
+        port: 9090
+
+persistence:
+  data:
+    enabled: true
+    size: 1Gi
+    accessMode: ReadWriteOnce
+    globalMounts:
+      - path: /etc/linkding/data

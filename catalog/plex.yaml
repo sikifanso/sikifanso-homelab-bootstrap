@@ -1,0 +1,8 @@
+name: plex
+category: media
+description: Personal media server for movies, TV, and music with client support across devices
+repoURL: https://raw.githubusercontent.com/plexinc/pms-docker/gh-pages
+chart: plex-media-server
+targetRevision: ">=1.0.0 <2.0.0"
+namespace: media
+enabled: false

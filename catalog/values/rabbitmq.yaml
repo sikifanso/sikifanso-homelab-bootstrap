@@ -1,0 +1,40 @@
+# Helm values for rabbitmq-cluster-operator (RabbitMQ Cluster Operator)
+# This installs the operator only. To provision a RabbitMQ broker,
+# create a RabbitmqCluster custom resource after the operator is running.
+# See: https://www.rabbitmq.com/kubernetes/operator/quickstart-operator
+
+# Operator deployment config
+replicaCount: 1
+
+resources:
+  requests:
+    memory: 64Mi
+    cpu: 50m
+  limits:
+    memory: 256Mi
+    cpu: 500m
+
+# Disable metrics by default
+metrics:
+  enabled: false
+
+# Example RabbitmqCluster CRD to create after operator install (do not apply
+# this directly via Helm values — create a separate RabbitmqCluster manifest):
+#
+# apiVersion: rabbitmq.com/v1beta1
+# kind: RabbitmqCluster
+# metadata:
+#   name: homelab-rabbitmq
+#   namespace: dev
+# spec:
+#   replicas: 1
+#   persistence:
+#     storageClassName: standard
+#     storage: 4Gi
+#   resources:
+#     requests:
+#       cpu: 100m
+#       memory: 128Mi
+#     limits:
+#       cpu: "1"
+#       memory: 512Mi

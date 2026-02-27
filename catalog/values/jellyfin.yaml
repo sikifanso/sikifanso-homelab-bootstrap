@@ -1,0 +1,35 @@
+# Helm values for jellyfin
+# Homelab defaults: single replica, persistence for config and media, modest resources
+
+replicaCount: 1
+
+persistence:
+  config:
+    enabled: true
+    size: 5Gi
+    accessMode: ReadWriteOnce
+  media:
+    enabled: false
+    # Set to your NFS or existing PVC for media storage
+    # existingClaim: media-pvc
+
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 100m
+  limits:
+    memory: 2Gi
+    cpu: "2"
+
+service:
+  type: ClusterIP
+  port: 8096
+
+# Enable hardware transcoding only if your node has the device available
+# extraVolumes:
+#   - name: dri
+#     hostPath:
+#       path: /dev/dri
+# extraVolumeMounts:
+#   - name: dri
+#     mountPath: /dev/dri
