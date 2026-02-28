@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: catalog
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: /local-gitops
+        revision: HEAD
+        files:
+          - path: "catalog/*.yaml"
+      selector:
+        matchExpressions:
+          - key: enabled
+            operator: In
+            values:
+              - "true"
+  template:
+    metadata:
+      name: "{{name}}"
+      namespace: argocd
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      project: default
+      sources:
+        - repoURL: "{{repoURL}}"
+          chart: "{{chart}}"
+          targetRevision: "{{targetRevision}}"
+          helm:
+            releaseName: "{{name}}"
+            valueFiles:
+              - $values/catalog/values/{{name}}.yaml
+        - repoURL: /local-gitops
+          targetRevision: HEAD
+          ref: values
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{namespace}}"
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true
