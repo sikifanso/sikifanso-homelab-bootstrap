@@ -6,7 +6,9 @@ architecture: standalone
 auth:
   enabled: true
   # CHANGE BEFORE DEPLOYING
-  password: changeme
+  aclUsers:
+    - username: default
+      password: changeme
 
 primary:
   replicaCount: 1
