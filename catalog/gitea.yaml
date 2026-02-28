@@ -3,6 +3,6 @@ category: dev
 description: Self-hosted Git service with code review, issues, CI/CD, and package registry
 repoURL: https://dl.gitea.com/charts
 chart: gitea
-targetRevision: ">=12.0.0 <13.0.0"
+targetRevision: "12.5.0"
 namespace: gitea
 enabled: false

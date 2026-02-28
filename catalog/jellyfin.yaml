@@ -3,6 +3,6 @@ category: media
 description: Free and open-source media server for personal media streaming
 repoURL: https://jellyfin.github.io/jellyfin-helm
 chart: jellyfin
-targetRevision: ">=2.0.0 <3.0.0"
+targetRevision: "2.7.0"
 namespace: media
 enabled: false

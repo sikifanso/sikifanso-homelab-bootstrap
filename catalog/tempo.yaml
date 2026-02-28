@@ -3,6 +3,6 @@ category: monitoring
 description: Distributed tracing backend compatible with Jaeger, Zipkin, and OpenTelemetry
 repoURL: https://grafana.github.io/helm-charts
 chart: tempo
-targetRevision: ">=1.20.0 <2.0.0"
+targetRevision: "1.24.4"
 namespace: monitoring
 enabled: false

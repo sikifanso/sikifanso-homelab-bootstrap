@@ -3,6 +3,6 @@ category: homelab
 description: Network-wide ad blocker acting as a DNS sinkhole
 repoURL: https://mojo2600.github.io/pihole-kubernetes
 chart: pihole
-targetRevision: ">=2.26.0 <3.0.0"
+targetRevision: "2.35.0"
 namespace: pihole
 enabled: false

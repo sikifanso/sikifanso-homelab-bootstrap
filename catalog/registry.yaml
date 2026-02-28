@@ -3,6 +3,6 @@ category: dev
 description: Docker container image registry for storing and distributing container images
 repoURL: https://twuni.github.io/docker-registry.helm
 chart: docker-registry
-targetRevision: ">=2.2.0 <4.0.0"
+targetRevision: "3.0.0"
 namespace: registry
 enabled: false

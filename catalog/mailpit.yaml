@@ -3,6 +3,6 @@ category: dev
 description: Email testing tool with SMTP server and web UI (MailHog successor)
 repoURL: https://jouve.github.io/charts
 chart: mailpit
-targetRevision: ">=0.20.0 <1.0.0"
+targetRevision: "0.31.2"
 namespace: dev
 enabled: false

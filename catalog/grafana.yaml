@@ -3,6 +3,6 @@ category: monitoring
 description: Open-source analytics and monitoring platform
 repoURL: https://grafana.github.io/helm-charts
 chart: grafana
-targetRevision: ">=10.0.0 <11.0.0"
+targetRevision: "10.5.15"
 namespace: monitoring
 enabled: false

@@ -3,6 +3,6 @@ category: monitoring
 description: Handles alerts from Prometheus and routes them to receivers such as email or Slack
 repoURL: https://prometheus-community.github.io/helm-charts
 chart: alertmanager
-targetRevision: ">=1.0.0 <2.0.0"
+targetRevision: "1.33.1"
 namespace: monitoring
 enabled: false
