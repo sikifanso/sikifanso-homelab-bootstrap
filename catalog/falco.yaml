@@ -3,6 +3,6 @@ category: security
 description: Runtime security tool detecting anomalous container behavior via eBPF
 repoURL: https://falcosecurity.github.io/charts
 chart: falco
-targetRevision: "4.28.0"
+targetRevision: "8.0.1"
 namespace: falco
 enabled: false
