@@ -1,8 +1,0 @@
-name: home-assistant
-category: homelab
-description: Open-source home automation platform that prioritises local control and privacy
-repoURL: https://bjw-s-labs.github.io/helm-charts
-chart: app-template
-targetRevision: "4.6.2"
-namespace: home-assistant
-enabled: false

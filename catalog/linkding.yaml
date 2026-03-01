@@ -1,8 +1,0 @@
-name: linkding
-category: homelab
-description: Self-hosted bookmark manager with tagging and full-text search
-repoURL: https://bjw-s-labs.github.io/helm-charts
-chart: app-template
-targetRevision: "4.6.2"
-namespace: linkding
-enabled: false

@@ -1,0 +1,8 @@
+name: metrics-server
+category: infrastructure
+description: Cluster-wide resource metrics for kubectl top and autoscaling
+repoURL: https://kubernetes-sigs.github.io/metrics-server/
+chart: metrics-server
+targetRevision: "3.12.3"
+namespace: kube-system
+enabled: false

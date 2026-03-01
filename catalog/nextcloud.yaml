@@ -1,8 +1,0 @@
-name: nextcloud
-category: homelab
-description: Self-hosted file sync and collaboration platform
-repoURL: https://nextcloud.github.io/helm
-chart: nextcloud
-targetRevision: "8.9.1"
-namespace: nextcloud
-enabled: false

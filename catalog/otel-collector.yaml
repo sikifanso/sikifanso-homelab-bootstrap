@@ -1,0 +1,8 @@
+name: otel-collector
+category: monitoring
+description: Vendor-agnostic telemetry collection pipeline for metrics, logs, and traces
+repoURL: https://open-telemetry.github.io/opentelemetry-helm-charts
+chart: opentelemetry-collector
+targetRevision: "0.115.1"
+namespace: monitoring
+enabled: false

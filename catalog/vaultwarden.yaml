@@ -1,8 +1,0 @@
-name: vaultwarden
-category: homelab
-description: Lightweight Bitwarden-compatible password manager server written in Rust
-repoURL: https://guerzon.github.io/vaultwarden
-chart: vaultwarden
-targetRevision: "0.34.6"
-namespace: vaultwarden
-enabled: false

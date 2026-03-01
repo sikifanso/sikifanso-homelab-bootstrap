@@ -1,0 +1,18 @@
+# Helm values for headlamp (headlamp-k8s/headlamp)
+# Homelab defaults: single replica, modest resources
+
+replicaCount: 1
+
+resources:
+  requests:
+    memory: 64Mi
+    cpu: 25m
+  limits:
+    memory: 256Mi
+    cpu: 200m
+
+service:
+  type: ClusterIP
+
+ingress:
+  enabled: false

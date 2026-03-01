@@ -1,8 +1,0 @@
-name: transmission
-category: media
-description: Fast, easy, and free BitTorrent client with a web interface
-repoURL: https://bjw-s-labs.github.io/helm-charts
-chart: app-template
-targetRevision: "4.6.2"
-namespace: media
-enabled: false

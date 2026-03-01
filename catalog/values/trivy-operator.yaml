@@ -1,0 +1,24 @@
+# Helm values for trivy-operator (aquasecurity/trivy-operator)
+# Homelab defaults: single replica, low scan concurrency, modest resources
+
+replicas: 1
+
+operator:
+  scanJobsConcurrentLimit: 1
+
+resources:
+  requests:
+    memory: 64Mi
+    cpu: 25m
+  limits:
+    memory: 256Mi
+    cpu: 250m
+
+trivy:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi

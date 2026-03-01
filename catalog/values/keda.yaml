@@ -1,0 +1,27 @@
+# Helm values for keda (kedacore/keda)
+# Homelab defaults: single replica, modest resources
+
+replicaCount: 1
+
+resources:
+  operator:
+    requests:
+      memory: 64Mi
+      cpu: 50m
+    limits:
+      memory: 256Mi
+      cpu: 500m
+  metricServer:
+    requests:
+      memory: 64Mi
+      cpu: 50m
+    limits:
+      memory: 256Mi
+      cpu: 500m
+  webhooks:
+    requests:
+      memory: 32Mi
+      cpu: 10m
+    limits:
+      memory: 128Mi
+      cpu: 100m

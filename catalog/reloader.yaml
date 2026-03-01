@@ -1,0 +1,8 @@
+name: reloader
+category: utility
+description: Auto-restarts pods when ConfigMaps or Secrets change
+repoURL: https://stakater.github.io/stakater-charts
+chart: reloader
+targetRevision: "2.1.3"
+namespace: reloader
+enabled: false

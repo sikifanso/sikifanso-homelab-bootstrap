@@ -1,0 +1,8 @@
+name: keda
+category: utility
+description: Event-driven autoscaler supporting external event sources
+repoURL: https://kedacore.github.io/charts
+chart: keda
+targetRevision: "2.17.1"
+namespace: keda
+enabled: false

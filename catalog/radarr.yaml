@@ -1,8 +1,0 @@
-name: radarr
-category: media
-description: Movie collection manager and automatic downloader for Usenet and BitTorrent
-repoURL: https://bjw-s-labs.github.io/helm-charts
-chart: app-template
-targetRevision: "4.6.2"
-namespace: media
-enabled: false

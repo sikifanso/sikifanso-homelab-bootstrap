@@ -1,0 +1,8 @@
+name: headlamp
+category: infrastructure
+description: Modern extensible web-based Kubernetes dashboard
+repoURL: https://headlamp-k8s.github.io/headlamp/
+chart: headlamp
+targetRevision: "0.28.1"
+namespace: headlamp
+enabled: false

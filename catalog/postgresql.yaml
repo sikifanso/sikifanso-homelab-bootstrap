@@ -1,8 +1,8 @@
 name: postgresql
 category: dev
-description: CloudNativePG operator for PostgreSQL databases
-repoURL: https://cloudnative-pg.github.io/charts
-chart: cloudnative-pg
-targetRevision: "0.27.1"
-namespace: cnpg-system
+description: Production-ready PostgreSQL database server
+repoURL: oci://ghcr.io/cloudpirates-io/helm-charts
+chart: postgres
+targetRevision: "0.11.4"
+namespace: postgresql
 enabled: false
