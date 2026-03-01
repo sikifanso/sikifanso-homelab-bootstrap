@@ -1,0 +1,33 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update Helm chart versions in catalog entries (HTTPS repos)",
+      "fileMatch": ["^catalog/[^/]+\\.yaml$"],
+      "matchStrings": [
+        "repoURL: (?<registryUrl>https?://[^\\s]+)\\nchart: (?<depName>[^\\s]+)\\ntargetRevision: \"?(?<currentValue>[^\"\\s]+)\"?"
+      ],
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "description": "Update OCI-based Helm chart versions in catalog entries",
+      "fileMatch": ["^catalog/postgresql\\.yaml$"],
+      "matchStrings": [
+        "targetRevision: \"?(?<currentValue>[^\"\\s]+)\"?"
+      ],
+      "depNameTemplate": "ghcr.io/cloudpirates-io/helm-charts/postgres",
+      "datasourceTemplate": "docker"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["patch", "minor"],
+      "automerge": true
+    }
+  ],
+  "platformAutomerge": true,
+  "automergeType": "pr"
+}
