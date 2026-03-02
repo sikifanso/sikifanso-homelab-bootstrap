@@ -3,6 +3,6 @@ category: security
 description: Continuous vulnerability scanning for Kubernetes workloads and images
 repoURL: https://aquasecurity.github.io/helm-charts/
 chart: trivy-operator
-targetRevision: "0.29.1"
+targetRevision: "0.32.0"
 namespace: trivy-system
 enabled: false

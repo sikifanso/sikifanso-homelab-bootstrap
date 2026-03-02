@@ -1,6 +1,9 @@
 # Helm values for otel-collector (open-telemetry/opentelemetry-collector)
 # Homelab defaults: deployment mode (gateway), basic OTLP receiver, modest resources
 
+image:
+  repository: otel/opentelemetry-collector-contrib
+
 mode: deployment
 
 replicaCount: 1
