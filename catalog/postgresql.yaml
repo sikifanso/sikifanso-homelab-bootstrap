@@ -3,6 +3,6 @@ category: dev
 description: Production-ready PostgreSQL database server
 repoURL: oci://ghcr.io/cloudpirates-io/helm-charts
 chart: postgres
-targetRevision: "0.11.4"
+targetRevision: "0.17.0"
 namespace: postgresql
 enabled: false
