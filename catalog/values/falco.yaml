@@ -2,7 +2,7 @@
 # Homelab defaults: eBPF driver (lighter than kernel module), modest resources
 
 driver:
-  kind: ebpf
+  kind: modern_ebpf
 
 resources:
   requests:
