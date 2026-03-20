@@ -1,8 +1,8 @@
 name: litellm-proxy
 category: gateway
 description: LLM API gateway with multi-provider routing, cost tracking, and rate limiting
-repoURL: https://litellm.github.io/helm-charts
+repoURL: https://richardoc.github.io/litellm_helm-chart
 chart: litellm
-targetRevision: "0.2.1"
+targetRevision: "0.0.4"
 namespace: gateway
 enabled: false

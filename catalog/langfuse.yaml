@@ -3,6 +3,6 @@ category: observability
 description: LLM tracing, eval tracking, prompt management, and cost-per-trace analytics
 repoURL: https://langfuse.github.io/langfuse-k8s
 chart: langfuse
-targetRevision: "1.2.14"
+targetRevision: "1.5.22"
 namespace: observability
 enabled: false

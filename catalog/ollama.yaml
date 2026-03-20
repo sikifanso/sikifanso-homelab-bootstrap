@@ -3,6 +3,6 @@ category: models
 description: Local LLM inference server with model management
 repoURL: https://otwld.github.io/ollama-helm
 chart: ollama
-targetRevision: "1.12.3"
+targetRevision: "1.52.0"
 namespace: models
 enabled: false
