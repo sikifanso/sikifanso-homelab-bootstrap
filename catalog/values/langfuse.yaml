@@ -1,6 +1,6 @@
 # Helm values for Langfuse
 # Local-first defaults: single replica, wired to cluster PostgreSQL and Valkey
-# Disables all bundled sub-charts — uses the cluster's shared instances
+# Uses bundled MinIO (S3) and ClickHouse until standalone catalog entries exist
 
 langfuse:
   # CHANGE BEFORE DEPLOYING — generate via: openssl rand -base64 32
@@ -9,8 +9,13 @@ langfuse:
   # CHANGE BEFORE DEPLOYING — generate via: openssl rand -hex 32
   encryptionKey:
     value: "ab2c5d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c"
+  nextauth:
+    url: http://localhost:3000
+    # CHANGE BEFORE DEPLOYING — generate via: openssl rand -base64 32
+    secret:
+      value: "sikifanso-local-nextauth-secret-change-me"
 
-# Disable bundled sub-charts — use cluster-wide PostgreSQL and Valkey
+# Use cluster-wide PostgreSQL
 postgresql:
   deploy: false
   host: postgresql.storage.svc.cluster.local
@@ -20,6 +25,7 @@ postgresql:
     password: changeme
     database: langfuse
 
+# Use cluster-wide Valkey (Redis)
 redis:
   deploy: false
   host: valkey.storage.svc.cluster.local
@@ -27,11 +33,18 @@ redis:
   auth:
     password: ""
 
+# Bundled ClickHouse — required for Langfuse v3 analytics
 clickhouse:
-  deploy: false
+  deploy: true
+  auth:
+    password: changeme
 
+# Bundled MinIO — required for Langfuse v3 event/media storage
 s3:
-  deploy: false
+  deploy: true
+  bucket: langfuse
+  region: auto
+  forcePathStyle: true
 
 resources:
   requests:
