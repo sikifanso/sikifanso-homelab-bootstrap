@@ -1,19 +1,23 @@
-# Helm values for Bitnami PostgreSQL
+# Helm values for CloudPirates PostgreSQL
 # Local-first defaults: single replica, persistence enabled
+# See: https://artifacthub.io/packages/helm/cloudpirates-postgres/postgres
+
+replicaCount: 1
 
 auth:
+  username: postgres
   # CHANGE BEFORE DEPLOYING
-  postgresPassword: changeme
+  password: changeme
   database: sikifanso
 
-primary:
-  persistence:
-    enabled: true
-    size: 10Gi
-  resources:
-    requests:
-      memory: 128Mi
-      cpu: 100m
-    limits:
-      memory: 512Mi
-      cpu: 500m
+persistence:
+  enabled: true
+  size: 10Gi
+
+resources:
+  requests:
+    memory: 128Mi
+    cpu: 100m
+  limits:
+    memory: 512Mi
+    cpu: 500m

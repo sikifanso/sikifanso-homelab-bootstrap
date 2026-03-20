@@ -1,8 +1,8 @@
 name: postgresql
 category: storage
 description: Production-ready PostgreSQL database server
-repoURL: https://charts.bitnami.com/bitnami
-chart: postgresql
-targetRevision: "18.5.1"
+repoURL: oci://ghcr.io/cloudpirates-io/helm-charts
+chart: postgres
+targetRevision: "0.18.3"
 namespace: storage
 enabled: false
