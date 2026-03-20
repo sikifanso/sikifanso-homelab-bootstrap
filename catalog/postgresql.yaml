@@ -1,7 +1,7 @@
 name: postgresql
 category: storage
 description: Production-ready PostgreSQL database server
-repoURL: oci://ghcr.io/cloudpirates-io/helm-charts
+repoURL: https://cloudpirates-io.github.io/helm-charts
 chart: postgres
 targetRevision: "0.18.3"
 namespace: storage
