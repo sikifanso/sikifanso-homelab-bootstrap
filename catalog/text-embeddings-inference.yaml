@@ -1,0 +1,8 @@
+name: text-embeddings-inference
+category: rag
+description: HuggingFace text embedding service for vector generation
+repoURL: https://huggingface.github.io/helm-charts
+chart: text-embeddings-inference
+targetRevision: "0.1.0"
+namespace: rag
+enabled: false

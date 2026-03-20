@@ -1,0 +1,24 @@
+# Helm values for Ollama local LLM inference
+# Local-first defaults: single replica, CPU-only, no pre-pulled models
+
+replicaCount: 1
+
+resources:
+  requests:
+    memory: 1Gi
+    cpu: 500m
+  limits:
+    memory: 4Gi
+    cpu: 2000m
+
+persistence:
+  enabled: true
+  size: 20Gi
+  accessModes:
+    - ReadWriteOnce
+
+# GPU support (uncomment if GPU is available)
+# gpu:
+#   enabled: true
+#   type: nvidia
+#   number: 1

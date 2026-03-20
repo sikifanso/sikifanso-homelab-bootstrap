@@ -1,0 +1,8 @@
+name: guardrails-ai
+category: guardrails
+description: LLM output validation, schema enforcement, and content filtering
+repoURL: https://guardrails-ai.github.io/helm-charts
+chart: guardrails-api
+targetRevision: "0.1.0"
+namespace: guardrails
+enabled: false

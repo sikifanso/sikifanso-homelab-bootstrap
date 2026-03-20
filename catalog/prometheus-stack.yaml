@@ -1,8 +1,8 @@
 name: prometheus-stack
-category: monitoring
-description: Kubernetes monitoring stack with Prometheus, Alertmanager, and Grafana
+category: observability
+description: Kubernetes observability stack with Prometheus, Alertmanager, and Grafana
 repoURL: https://prometheus-community.github.io/helm-charts
 chart: kube-prometheus-stack
 targetRevision: "82.4.3"
-namespace: monitoring
+namespace: observability
 enabled: false

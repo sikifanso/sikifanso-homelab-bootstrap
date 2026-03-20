@@ -1,5 +1,5 @@
 name: postgresql
-category: dev
+category: storage
 description: Production-ready PostgreSQL database server
 repoURL: oci://ghcr.io/cloudpirates-io/helm-charts
 chart: postgres

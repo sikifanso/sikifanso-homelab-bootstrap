@@ -1,5 +1,5 @@
 # Helm values for tempo
-# Homelab defaults: single replica, filesystem storage, modest resources
+# Local-first defaults: single replica, filesystem storage, modest resources
 
 tempo:
   storage:

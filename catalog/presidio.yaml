@@ -1,0 +1,8 @@
+name: presidio
+category: guardrails
+description: PII detection and redaction engine (Microsoft)
+repoURL: https://microsoft.github.io/presidio
+chart: presidio
+targetRevision: "0.1.0"
+namespace: guardrails
+enabled: false

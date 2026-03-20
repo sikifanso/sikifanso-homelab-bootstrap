@@ -1,0 +1,8 @@
+name: temporal
+category: runtime
+description: Workflow orchestration engine for multi-agent coordination and retries
+repoURL: https://go.temporal.io/helm-charts
+chart: temporal
+targetRevision: "0.52.0"
+namespace: runtime
+enabled: false

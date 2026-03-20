@@ -1,0 +1,8 @@
+name: qdrant
+category: rag
+description: High-performance vector database for embeddings and semantic search
+repoURL: https://qdrant.github.io/qdrant-helm
+chart: qdrant
+targetRevision: "0.13.2"
+namespace: rag
+enabled: false

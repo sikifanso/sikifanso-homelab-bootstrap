@@ -1,0 +1,8 @@
+name: opa
+category: runtime
+description: Policy engine for agent RBAC and tool-level access control
+repoURL: https://open-policy-agent.github.io/kube-mgmt/charts
+chart: opa-kube-mgmt
+targetRevision: "1.9.0"
+namespace: runtime
+enabled: false

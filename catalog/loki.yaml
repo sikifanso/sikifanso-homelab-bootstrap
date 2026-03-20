@@ -1,8 +1,8 @@
 name: loki
-category: monitoring
+category: observability
 description: Log aggregation system designed to store and query logs from applications
 repoURL: https://grafana.github.io/helm-charts
 chart: loki
 targetRevision: "6.53.0"
-namespace: monitoring
+namespace: observability
 enabled: false

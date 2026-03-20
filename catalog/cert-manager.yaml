@@ -1,8 +1,0 @@
-name: cert-manager
-category: infrastructure
-description: Automated TLS certificate management with issuance and renewal
-repoURL: https://charts.jetstack.io
-chart: cert-manager
-targetRevision: "1.19.4"
-namespace: cert-manager
-enabled: false

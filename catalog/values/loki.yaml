@@ -1,5 +1,5 @@
 # Helm values for loki
-# Homelab defaults: single-binary (monolithic) deployment mode, minimal resources
+# Local-first defaults: single-binary (monolithic) deployment mode, minimal resources
 
 deploymentMode: SingleBinary
 

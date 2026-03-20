@@ -1,22 +1,51 @@
-# sikifanso-homelab-bootstrap
+# sikifanso-bootstrap
 
-GitOps bootstrap for a homelab Kubernetes cluster using ArgoCD ApplicationSets.
+GitOps bootstrap for AI agent infrastructure on Kubernetes using ArgoCD ApplicationSets.
 
 ## How it works
 
-The repository uses a single ArgoCD `ApplicationSet` with a Git file generator to dynamically discover and deploy applications. Each app is defined by two files: a coordinate file that specifies which Helm chart to deploy, and a values file that provides Helm value overrides.
+The repository uses ArgoCD `ApplicationSet` resources with Git file generators to dynamically discover and deploy applications. There are two tracks:
 
-1. **`bootstrap/root-app.yaml`** — An `ApplicationSet` that watches for `apps/coordinates/*.yaml` files. For each match, it generates a multi-source ArgoCD Application that combines the chart coordinates with the corresponding values file from `apps/values/`.
+1. **`bootstrap/root-catalog.yaml`** -- An `ApplicationSet` that watches `catalog/*.yaml` files. Only entries with `enabled: true` generate ArgoCD Applications. Each catalog entry specifies a Helm chart and is paired with values from `catalog/values/`.
 
-2. **`apps/coordinates/<name>.yaml`** — A YAML file declaring which Helm chart to deploy and where.
+2. **`bootstrap/root-app.yaml`** -- An `ApplicationSet` that watches `apps/coordinates/*.yaml` for custom Helm charts added by the user.
 
-3. **`apps/values/<name>.yaml`** — A YAML file containing Helm value overrides for the application.
+## AI Agent Infrastructure Catalog
 
-No manual Application manifests needed — add the two YAML files, push to Git, and ArgoCD handles the rest.
+The catalog contains curated tools for running AI agents:
 
-## Adding an application
+| Category | Tools | Purpose |
+|----------|-------|---------|
+| **gateway** | LiteLLM Proxy | LLM API routing, cost tracking, rate limiting |
+| **observability** | Langfuse, Prometheus+Grafana, Loki, Tempo | LLM tracing, metrics, logs, distributed tracing |
+| **guardrails** | Guardrails AI, NeMo Guardrails, Presidio | Output validation, safety rails, PII redaction |
+| **rag** | Qdrant, Text Embeddings Inference, Unstructured | Vector DB, embeddings, document parsing |
+| **runtime** | Temporal, External Secrets, OPA | Workflow orchestration, secrets, policy |
+| **models** | Ollama | Local LLM inference |
+| **storage** | PostgreSQL, Valkey (Redis) | Supporting data stores |
 
-Each application requires two files:
+Enable a tool:
+
+```bash
+sikifanso catalog enable litellm-proxy
+```
+
+Each catalog entry is a YAML file:
+
+```yaml
+name: litellm-proxy
+category: gateway
+description: LLM API gateway with multi-provider routing, cost tracking, and rate limiting
+repoURL: https://litellm.github.io/helm-charts
+chart: litellm
+targetRevision: "0.2.1"
+namespace: gateway
+enabled: false
+```
+
+## Adding a custom application
+
+Each custom application requires two files:
 
 ```
 apps/
@@ -43,8 +72,6 @@ The values file contains Helm value overrides:
 replicaCount: 2
 ```
 
-Once pushed, the ApplicationSet generator picks up the coordinate file and creates the corresponding ArgoCD Application automatically. The multi-source setup ensures the values file is applied to the Helm release.
-
 ### Using the sikifanso CLI
 
 The `sikifanso` CLI can manage apps directly:
@@ -57,22 +84,23 @@ sikifanso app remove   # remove an application
 
 ### Manual workflow
 
-You can also create the two YAML files by hand and push them to Git. The result is the same — ArgoCD picks up the changes automatically.
+You can also create the two YAML files by hand and push them to Git. The result is the same -- ArgoCD picks up the changes automatically.
 
 ## Bootstrapping
 
-Apply the root ApplicationSet to an ArgoCD-enabled cluster:
+Apply the root ApplicationSets to an ArgoCD-enabled cluster:
 
 ```bash
 kubectl apply -f bootstrap/root-app.yaml
+kubectl apply -f bootstrap/root-catalog.yaml
 ```
 
 ## Sync policy
 
 All generated applications are configured with:
 
-- **Automated sync** — changes in Git are applied automatically
-- **Self-heal** — manual drift on the cluster is corrected
-- **Prune** — resources removed from Git are deleted from the cluster
-- **CreateNamespace** — target namespaces are created if they don't exist
-- **ServerSideApply** — uses server-side apply for resource management
+- **Automated sync** -- changes in Git are applied automatically
+- **Self-heal** -- manual drift on the cluster is corrected
+- **Prune** -- resources removed from Git are deleted from the cluster
+- **CreateNamespace** -- target namespaces are created if they don't exist
+- **ServerSideApply** -- uses server-side apply for resource management

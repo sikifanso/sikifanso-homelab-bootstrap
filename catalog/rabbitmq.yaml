@@ -1,8 +1,0 @@
-name: rabbitmq
-category: dev
-description: RabbitMQ message broker via cluster operator
-repoURL: https://charts.bitnami.com/bitnami
-chart: rabbitmq-cluster-operator
-targetRevision: "4.4.34"
-namespace: rabbitmq-system
-enabled: false

@@ -1,0 +1,12 @@
+# Helm values for Guardrails AI
+# Local-first defaults: single replica, minimal resources
+
+replicaCount: 1
+
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 100m
+  limits:
+    memory: 512Mi
+    cpu: 500m

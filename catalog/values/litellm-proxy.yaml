@@ -1,0 +1,20 @@
+# Helm values for LiteLLM Proxy
+# Local-first defaults: single replica, SQLite storage, no external providers pre-configured
+
+replicaCount: 1
+
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 100m
+  limits:
+    memory: 512Mi
+    cpu: 500m
+
+# Configure LLM providers via environment variables or config
+# See: https://docs.litellm.ai/docs/proxy/configs
+# CHANGE BEFORE DEPLOYING
+masterKey: "sk-sikifanso-local"
+
+db:
+  useExisting: false

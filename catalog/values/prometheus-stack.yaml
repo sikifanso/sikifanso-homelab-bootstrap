@@ -1,5 +1,5 @@
 # Helm values for prometheus-stack (kube-prometheus-stack)
-# Homelab defaults: single replica, reduced resource requests, persistence enabled
+# Local-first defaults: single replica, reduced resource requests, persistence enabled
 
 alertmanager:
   alertmanagerSpec:

@@ -1,0 +1,8 @@
+name: nemo-guardrails
+category: guardrails
+description: Conversational safety rails, topic control, and jailbreak prevention (NVIDIA)
+repoURL: https://nvidia.github.io/NeMo-Guardrails
+chart: nemo-guardrails
+targetRevision: "0.1.0"
+namespace: guardrails
+enabled: false

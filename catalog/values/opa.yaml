@@ -1,0 +1,21 @@
+# Helm values for OPA (Open Policy Agent) with kube-mgmt
+# Local-first defaults: single replica
+
+replicaCount: 1
+
+resources:
+  requests:
+    memory: 64Mi
+    cpu: 50m
+  limits:
+    memory: 256Mi
+    cpu: 200m
+
+mgmt:
+  resources:
+    requests:
+      memory: 64Mi
+      cpu: 50m
+    limits:
+      memory: 256Mi
+      cpu: 200m

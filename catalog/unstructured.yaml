@@ -1,0 +1,8 @@
+name: unstructured
+category: rag
+description: Document parsing and chunking for PDFs, HTML, and code files
+repoURL: https://unstructured-io.github.io/helm-charts
+chart: unstructured-api
+targetRevision: "0.1.0"
+namespace: rag
+enabled: false

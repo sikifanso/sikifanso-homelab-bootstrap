@@ -1,8 +1,8 @@
 name: valkey
-category: dev
+category: storage
 description: Valkey in-memory data store (Redis-compatible fork)
 repoURL: https://valkey.io/valkey-helm
 chart: valkey
 targetRevision: "0.9.3"
-namespace: dev
+namespace: storage
 enabled: false

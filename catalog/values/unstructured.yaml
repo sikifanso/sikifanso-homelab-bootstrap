@@ -1,0 +1,12 @@
+# Helm values for Unstructured API
+# Local-first defaults: single replica, basic parsing
+
+replicaCount: 1
+
+resources:
+  requests:
+    memory: 512Mi
+    cpu: 200m
+  limits:
+    memory: 2Gi
+    cpu: 1000m

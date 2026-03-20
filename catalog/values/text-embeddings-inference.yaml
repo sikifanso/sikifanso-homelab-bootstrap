@@ -1,0 +1,14 @@
+# Helm values for HuggingFace Text Embeddings Inference
+# Local-first defaults: single replica, small model, CPU-only
+
+replicaCount: 1
+
+model: "BAAI/bge-small-en-v1.5"
+
+resources:
+  requests:
+    memory: 512Mi
+    cpu: 200m
+  limits:
+    memory: 2Gi
+    cpu: 1000m

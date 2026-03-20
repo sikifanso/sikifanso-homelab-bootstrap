@@ -1,0 +1,56 @@
+# Helm values for Temporal workflow engine
+# Local-first defaults: single replica, uses cluster PostgreSQL
+
+server:
+  replicaCount: 1
+  resources:
+    requests:
+      memory: 256Mi
+      cpu: 100m
+    limits:
+      memory: 1Gi
+      cpu: 500m
+
+web:
+  replicaCount: 1
+  resources:
+    requests:
+      memory: 128Mi
+      cpu: 50m
+    limits:
+      memory: 256Mi
+      cpu: 200m
+
+# Use cluster's PostgreSQL instance
+postgresql:
+  enabled: false
+
+cassandra:
+  enabled: false
+
+mysql:
+  enabled: false
+
+schema:
+  setup:
+    enabled: false
+
+# Persistence store - uses cluster's PostgreSQL instance
+persistence:
+  default:
+    driver: sql
+    sql:
+      host: postgresql.storage.svc.cluster.local
+      port: 5432
+      database: temporal
+      user: temporal
+      password: temporal
+
+  visibility:
+    driver: sql
+    sql:
+      host: postgresql.storage.svc.cluster.local
+      port: 5432
+      database: temporal_visibility
+      user: temporal
+      password: temporal
