@@ -1,7 +1,12 @@
 # Helm values for Ollama local LLM inference
-# Local-first defaults: single replica, CPU-only, no pre-pulled models
+# Local-first defaults: single replica, CPU-only, pulls a small model on startup
 
 replicaCount: 1
+
+ollama:
+  models:
+    pull:
+      - llama3.2:1b
 
 resources:
   requests:
@@ -11,6 +16,10 @@ resources:
     memory: 4Gi
     cpu: 2000m
 
+service:
+  type: ClusterIP
+  port: 11434
+
 persistence:
   enabled: true
   size: 20Gi
@@ -18,7 +27,8 @@ persistence:
     - ReadWriteOnce
 
 # GPU support (uncomment if GPU is available)
-# gpu:
-#   enabled: true
-#   type: nvidia
-#   number: 1
+# ollama:
+#   gpu:
+#     enabled: true
+#     type: nvidia
+#     number: 1

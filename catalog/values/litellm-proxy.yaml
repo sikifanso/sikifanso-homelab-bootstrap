@@ -1,5 +1,5 @@
 # Helm values for LiteLLM Proxy
-# Local-first defaults: single replica, SQLite storage, no external providers pre-configured
+# Local-first defaults: wired to Ollama for local inference, Langfuse for tracing
 
 replicaCount: 1
 
@@ -11,10 +11,29 @@ resources:
     memory: 512Mi
     cpu: 500m
 
-# Configure LLM providers via environment variables or config
-# See: https://docs.litellm.ai/docs/proxy/configs
-# CHANGE BEFORE DEPLOYING
-masterKey: "sk-sikifanso-local"
+service:
+  type: ClusterIP
+  port: 4000
 
-db:
-  useExisting: false
+# LiteLLM proxy configuration
+proxy_config:
+  model_list:
+    - model_name: "local"
+      litellm_params:
+        model: "ollama/llama3.2:1b"
+        api_base: "http://ollama.models.svc.cluster.local:11434"
+
+  general_settings:
+    # CHANGE BEFORE DEPLOYING
+    master_key: "sk-sikifanso-local"
+
+  litellm_settings:
+    # Send traces to Langfuse for LLM observability
+    success_callback: ["langfuse"]
+    failure_callback: ["langfuse"]
+
+# Environment variables for Langfuse integration
+env:
+  LANGFUSE_HOST: "http://langfuse.observability.svc.cluster.local:3000"
+  LANGFUSE_PUBLIC_KEY: "pk-lf-local"
+  LANGFUSE_SECRET_KEY: "sk-lf-local"

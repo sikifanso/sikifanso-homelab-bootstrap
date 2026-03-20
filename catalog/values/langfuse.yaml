@@ -1,7 +1,40 @@
 # Helm values for Langfuse
-# Local-first defaults: single replica, uses cluster PostgreSQL
+# Local-first defaults: single replica, wired to cluster PostgreSQL and Valkey
 
-replicaCount: 1
+# Disable bundled sub-charts — use the cluster's shared instances
+postgresql:
+  deploy: false
+redis:
+  deploy: false
+clickhouse:
+  deploy: false
+s3:
+  deploy: false
+
+# Connect to cluster PostgreSQL (postgresql.storage.svc.cluster.local)
+langfuse:
+  salt:
+    value: "c2lraWZhbnNvLWxvY2FsLXNhbHQ="
+  encryptionKey:
+    value: "0000000000000000000000000000000000000000000000000000000000000000"
+
+# External PostgreSQL connection
+postgresql:
+  deploy: false
+  host: postgresql.storage.svc.cluster.local
+  port: 5432
+  auth:
+    username: postgres
+    password: changeme
+    database: langfuse
+
+# External Redis/Valkey connection
+redis:
+  deploy: false
+  host: valkey.storage.svc.cluster.local
+  port: 6379
+  auth:
+    password: ""
 
 resources:
   requests:
@@ -10,10 +43,3 @@ resources:
   limits:
     memory: 1Gi
     cpu: 500m
-
-# Langfuse requires PostgreSQL - uses the cluster's postgresql instance
-postgresql:
-  deploy: false
-  host: postgresql.storage.svc.cluster.local
-  port: 5432
-  database: langfuse
