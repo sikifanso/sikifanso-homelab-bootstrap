@@ -1,2 +1,19 @@
-# Helm values for CloudPirates PostgreSQL chart
-# See: https://github.com/cloudpirates-io/helm-charts
+# Helm values for Bitnami PostgreSQL
+# Local-first defaults: single replica, persistence enabled
+
+auth:
+  # CHANGE BEFORE DEPLOYING
+  postgresPassword: changeme
+  database: sikifanso
+
+primary:
+  persistence:
+    enabled: true
+    size: 10Gi
+  resources:
+    requests:
+      memory: 128Mi
+      cpu: 100m
+    limits:
+      memory: 512Mi
+      cpu: 500m

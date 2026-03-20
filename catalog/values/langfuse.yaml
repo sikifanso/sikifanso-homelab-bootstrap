@@ -1,24 +1,16 @@
 # Helm values for Langfuse
 # Local-first defaults: single replica, wired to cluster PostgreSQL and Valkey
+# Disables all bundled sub-charts — uses the cluster's shared instances
 
-# Disable bundled sub-charts — use the cluster's shared instances
-postgresql:
-  deploy: false
-redis:
-  deploy: false
-clickhouse:
-  deploy: false
-s3:
-  deploy: false
-
-# Connect to cluster PostgreSQL (postgresql.storage.svc.cluster.local)
 langfuse:
+  # CHANGE BEFORE DEPLOYING — generate via: openssl rand -base64 32
   salt:
-    value: "c2lraWZhbnNvLWxvY2FsLXNhbHQ="
+    value: "sikifanso-local-salt-change-me-before-prod"
+  # CHANGE BEFORE DEPLOYING — generate via: openssl rand -hex 32
   encryptionKey:
-    value: "0000000000000000000000000000000000000000000000000000000000000000"
+    value: "ab2c5d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c"
 
-# External PostgreSQL connection
+# Disable bundled sub-charts — use cluster-wide PostgreSQL and Valkey
 postgresql:
   deploy: false
   host: postgresql.storage.svc.cluster.local
@@ -28,13 +20,18 @@ postgresql:
     password: changeme
     database: langfuse
 
-# External Redis/Valkey connection
 redis:
   deploy: false
   host: valkey.storage.svc.cluster.local
   port: 6379
   auth:
     password: ""
+
+clickhouse:
+  deploy: false
+
+s3:
+  deploy: false
 
 resources:
   requests:
