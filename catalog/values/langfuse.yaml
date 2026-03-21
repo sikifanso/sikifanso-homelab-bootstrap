@@ -45,6 +45,10 @@ s3:
   bucket: langfuse
   region: auto
   forcePathStyle: true
+  auth:
+    # CHANGE BEFORE DEPLOYING — static password prevents ArgoCD sync loops
+    rootPassword: changeme
+    rootUser: minio
 
 resources:
   requests:
