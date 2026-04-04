@@ -4,6 +4,8 @@ metadata:
   name: catalog
   namespace: argocd
 spec:
+  syncPolicy:
+    applicationsSync: sync
   generators:
     - git:
         repoURL: /local-gitops
