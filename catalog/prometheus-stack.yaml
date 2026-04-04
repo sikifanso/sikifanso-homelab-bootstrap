@@ -6,3 +6,4 @@ chart: kube-prometheus-stack
 targetRevision: "82.15.1"
 namespace: observability
 enabled: false
+tier: 0-operators

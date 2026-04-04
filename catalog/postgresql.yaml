@@ -6,3 +6,7 @@ chart: cluster
 targetRevision: "0.6.0"
 namespace: storage
 enabled: false
+tier: 1-data
+dependsOn:
+  - cnpg-operator
+  - prometheus-stack

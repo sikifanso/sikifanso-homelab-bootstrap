@@ -6,3 +6,7 @@ chart: temporal
 targetRevision: "0.73.2"
 namespace: runtime
 enabled: false
+tier: 2-services
+dependsOn:
+  - cnpg-operator
+  - postgresql

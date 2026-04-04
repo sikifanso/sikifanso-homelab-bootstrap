@@ -6,3 +6,4 @@ chart: cloudnative-pg
 targetRevision: "0.28.0"
 namespace: cnpg-system
 enabled: false
+tier: 0-operators
