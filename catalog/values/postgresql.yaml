@@ -1,23 +1,57 @@
-# Helm values for CloudPirates PostgreSQL
-# Local-first defaults: single replica, persistence enabled
-# See: https://artifacthub.io/packages/helm/cloudpirates-postgres/postgres
+# Helm values for CloudNativePG Cluster
+# Local-first defaults: single instance, no backups, declarative databases and roles
+# Superuser and service account passwords are set via postInitSQL for simplicity
 
-replicaCount: 1
+type: postgresql
 
-auth:
-  username: postgres
-  # CHANGE BEFORE DEPLOYING
-  password: changeme
-  database: sikifanso
+version:
+  postgresql: "17"
 
-persistence:
-  enabled: true
-  size: 10Gi
+mode: standalone
 
-resources:
-  requests:
-    memory: 128Mi
-    cpu: 100m
-  limits:
-    memory: 512Mi
-    cpu: 500m
+cluster:
+  instances: 1
+
+  enableSuperuserAccess: true
+
+  storage:
+    size: 10Gi
+
+  resources:
+    requests:
+      memory: 256Mi
+      cpu: 100m
+    limits:
+      memory: 512Mi
+      cpu: 500m
+
+  monitoring:
+    enabled: true
+    podMonitor:
+      enabled: true
+
+  initdb:
+    database: sikifanso
+    postInitSQL:
+      # Set a known superuser password for local wiring (Langfuse, etc.)
+      # CHANGE BEFORE DEPLOYING to production
+      - ALTER USER postgres PASSWORD 'changeme';
+      # Create databases for platform services
+      - CREATE DATABASE langfuse;
+      - CREATE DATABASE temporal;
+      - CREATE DATABASE temporal_visibility;
+      # Create temporal service account with full access to its databases
+      - CREATE ROLE temporal LOGIN PASSWORD 'temporal';
+      - GRANT ALL PRIVILEGES ON DATABASE temporal TO temporal;
+      - GRANT ALL PRIVILEGES ON DATABASE temporal_visibility TO temporal;
+      # PG 15+ requires explicit schema grants
+      - ALTER DATABASE temporal OWNER TO temporal;
+      - ALTER DATABASE temporal_visibility OWNER TO temporal;
+
+  postgresql:
+    parameters:
+      max_connections: "200"
+      shared_buffers: "64MB"
+
+backups:
+  enabled: false

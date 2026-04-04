@@ -33,14 +33,14 @@ mysql:
 
 schema:
   setup:
-    enabled: false
+    enabled: true
 
 # Persistence store - uses cluster's PostgreSQL instance
 persistence:
   default:
     driver: sql
     sql:
-      host: postgresql.storage.svc.cluster.local
+      host: postgresql-rw.storage.svc.cluster.local
       port: 5432
       database: temporal
       user: temporal
@@ -49,7 +49,7 @@ persistence:
   visibility:
     driver: sql
     sql:
-      host: postgresql.storage.svc.cluster.local
+      host: postgresql-rw.storage.svc.cluster.local
       port: 5432
       database: temporal_visibility
       user: temporal
