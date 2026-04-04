@@ -6,3 +6,6 @@ chart: nemo-guardrails
 targetRevision: "0.1.0"
 namespace: guardrails
 enabled: false
+tier: 2-services
+dependsOn:
+  - litellm-proxy

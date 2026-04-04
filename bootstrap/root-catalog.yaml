@@ -70,6 +70,11 @@ spec:
           jqPathExpressions:
             - .spec.imageName
       syncPolicy:
+        # selfHeal ensures ArgoCD re-drives the sync if the manual SyncApplication
+        # call in waitForAppear races with an in-flight reconcile and is dropped.
+        automated:
+          selfHeal: true
+          prune: true
         syncOptions:
           - CreateNamespace=true
           - ServerSideApply=true

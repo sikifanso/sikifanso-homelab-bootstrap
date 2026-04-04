@@ -6,3 +6,7 @@ chart: alloy
 targetRevision: "1.6.1"
 namespace: observability
 enabled: false
+tier: 2-services
+dependsOn:
+  - loki
+  - tempo

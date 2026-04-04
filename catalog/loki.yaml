@@ -6,3 +6,4 @@ chart: loki
 targetRevision: "6.55.0"
 namespace: observability
 enabled: false
+tier: 1-data

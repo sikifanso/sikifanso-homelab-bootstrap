@@ -6,3 +6,4 @@ chart: valkey
 targetRevision: "0.9.3"
 namespace: storage
 enabled: false
+tier: 1-data

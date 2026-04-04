@@ -6,3 +6,4 @@ chart: opa-kube-mgmt
 targetRevision: "10.0.0"
 namespace: runtime
 enabled: false
+tier: 0-operators

@@ -6,3 +6,4 @@ chart: guardrails-api
 targetRevision: "0.1.0"
 namespace: guardrails
 enabled: false
+tier: 2-services
