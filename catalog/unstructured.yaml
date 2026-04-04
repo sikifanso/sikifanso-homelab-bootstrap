@@ -6,3 +6,4 @@ chart: unstructured-api
 targetRevision: "0.1.0"
 namespace: rag
 enabled: false
+tier: 2-services

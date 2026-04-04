@@ -6,3 +6,4 @@ chart: tempo
 targetRevision: "1.24.4"
 namespace: observability
 enabled: false
+tier: 1-data

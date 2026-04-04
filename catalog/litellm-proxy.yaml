@@ -6,3 +6,7 @@ chart: litellm
 targetRevision: "0.0.4"
 namespace: gateway
 enabled: false
+tier: 2-services
+dependsOn:
+  - langfuse
+  - ollama

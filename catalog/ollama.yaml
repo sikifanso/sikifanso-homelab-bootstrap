@@ -6,3 +6,4 @@ chart: ollama
 targetRevision: "1.52.0"
 namespace: models
 enabled: false
+tier: 1-data

@@ -34,14 +34,19 @@ redis:
     password: "changeme"
 
 # Bundled ClickHouse — required for Langfuse v3 analytics
+# Single-node, small resource preset to fit a homelab (default is replicaCount:3, 2xlarge ~8Gi)
 clickhouse:
   deploy: true
+  replicaCount: 1
+  # Bitnami resourcesPreset: nano=128Mi, micro=256Mi, small=512Mi, medium=1Gi
+  resourcesPreset: small
   auth:
     password: changeme
 
 # Bundled MinIO — required for Langfuse v3 event/media storage
 s3:
   deploy: true
+  resourcesPreset: nano
   bucket: langfuse
   region: auto
   forcePathStyle: true

@@ -6,3 +6,4 @@ chart: qdrant
 targetRevision: "1.17.1"
 namespace: rag
 enabled: false
+tier: 1-data
