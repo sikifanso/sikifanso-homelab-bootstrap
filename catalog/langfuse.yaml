@@ -6,3 +6,7 @@ chart: langfuse
 targetRevision: "1.5.23"
 namespace: observability
 enabled: false
+tier: 2-services
+dependsOn:
+  - cnpg-operator
+  - postgresql
