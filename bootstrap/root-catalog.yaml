@@ -4,8 +4,25 @@ metadata:
   name: catalog
   namespace: argocd
 spec:
-  syncPolicy:
-    applicationsSync: sync
+  strategy:
+    type: RollingSync
+    rollingSync:
+      steps:
+        - matchExpressions:
+            - key: tier
+              operator: In
+              values:
+                - 0-operators
+        - matchExpressions:
+            - key: tier
+              operator: In
+              values:
+                - 1-data
+        - matchExpressions:
+            - key: tier
+              operator: In
+              values:
+                - 2-services
   generators:
     - git:
         repoURL: /local-gitops
@@ -22,6 +39,8 @@ spec:
     metadata:
       name: "{{name}}"
       namespace: argocd
+      labels:
+        tier: "{{tier}}"
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:
@@ -51,10 +70,14 @@ spec:
           jqPathExpressions:
             - .spec.imageName
       syncPolicy:
-        automated:
-          selfHeal: true
-          prune: true
         syncOptions:
           - CreateNamespace=true
           - ServerSideApply=true
           - RespectIgnoreDifferences=true
+          - SkipDryRunOnMissingResource=true
+        retry:
+          limit: 3
+          backoff:
+            duration: 10s
+            factor: 2
+            maxDuration: 3m
