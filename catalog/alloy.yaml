@@ -1,0 +1,8 @@
+name: alloy
+category: observability
+description: Telemetry collector — ships logs to Loki, forwards OTLP traces to Tempo
+repoURL: https://grafana.github.io/helm-charts
+chart: alloy
+targetRevision: "1.6.1"
+namespace: observability
+enabled: false

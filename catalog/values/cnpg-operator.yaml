@@ -1,0 +1,15 @@
+# Helm values for CloudNativePG operator
+# Local-first defaults: single replica controller, cluster-wide watch
+#
+# NOTE: The postgresql catalog entry (cnpg/cluster chart) depends on this operator's
+# CRDs. On first deploy, ArgoCD may briefly show errors for the postgresql app until
+# the operator finishes installing CRDs. ArgoCD's selfHeal will auto-recover.
+
+replicaCount: 1
+
+crds:
+  create: true
+
+config:
+  create: true
+  clusterWide: true

@@ -18,7 +18,7 @@ langfuse:
 # Use cluster-wide PostgreSQL
 postgresql:
   deploy: false
-  host: postgresql.storage.svc.cluster.local
+  host: postgresql-rw.storage.svc.cluster.local
   port: 5432
   auth:
     username: postgres
@@ -31,7 +31,7 @@ redis:
   host: valkey.storage.svc.cluster.local
   port: 6379
   auth:
-    password: ""
+    password: "changeme"
 
 # Bundled ClickHouse — required for Langfuse v3 analytics
 clickhouse:

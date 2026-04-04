@@ -29,6 +29,6 @@ primary:
 replica:
   replicaCount: 0
 
-# Disable metrics sidecar by default
+# Enable metrics sidecar for Prometheus scraping
 metrics:
-  enabled: false
+  enabled: true
