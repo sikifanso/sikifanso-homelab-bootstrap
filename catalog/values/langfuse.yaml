@@ -42,6 +42,17 @@ clickhouse:
   resourcesPreset: small
   auth:
     password: changeme
+  # Cap ClickHouse engine memory to stay within the 768Mi container limit.
+  # Without this, ClickHouse defaults to ~10GB max_memory_usage and gets OOM-killed
+  # instead of returning a clean MEMORY_LIMIT_EXCEEDED error on large queries.
+  extraOverrides: |
+    <clickhouse>
+      <profiles>
+        <default>
+          <max_memory_usage>524288000</max_memory_usage>
+        </default>
+      </profiles>
+    </clickhouse>
 
 # Bundled MinIO — required for Langfuse v3 event/media storage
 s3:
