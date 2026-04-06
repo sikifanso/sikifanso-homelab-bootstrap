@@ -10,19 +10,22 @@ alertmanager:
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
-              storage: 5Gi
+              storage: 1Gi
 
 prometheus:
   prometheusSpec:
     replicas: 1
     retention: 7d
+    # Hard cap on TSDB size — Prometheus drops oldest blocks when reached.
+    # Set below PVC capacity to leave headroom for the WAL.
+    retentionSize: "4GB"
     storageSpec:
       volumeClaimTemplate:
         spec:
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
-              storage: 20Gi
+              storage: 5Gi
     resources:
       requests:
         memory: 512Mi
