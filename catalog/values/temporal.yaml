@@ -1,11 +1,13 @@
 # Helm values for Temporal workflow engine
 # Local-first defaults: single replica, uses cluster PostgreSQL
 
+# Each Temporal component runs as its own Deployment, so total cluster
+# footprint is the sum of all four services.
 server:
+  # Global replica count — applies to all four services (frontend, history,
+  # matching, worker). The chart has no per-service replicaCount key.
   replicaCount: 1
 
-  # Per-service resources — each Temporal component runs as its own Deployment,
-  # so total cluster footprint is the sum of all four services.
   frontend:
     resources:
       requests:
