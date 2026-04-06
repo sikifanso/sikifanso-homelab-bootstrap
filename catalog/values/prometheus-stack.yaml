@@ -1,5 +1,10 @@
 # Helm values for prometheus-stack (kube-prometheus-stack)
 # Local-first defaults: single replica, reduced resource requests, persistence enabled
+#
+# NOTE: PVC sizes in StatefulSet VolumeClaimTemplates are immutable. If you
+# change storage sizes on an existing cluster, delete the old PVCs first:
+#   kubectl delete pvc -n observability -l app.kubernetes.io/name=prometheus
+#   kubectl delete pvc -n observability -l app.kubernetes.io/name=alertmanager
 
 alertmanager:
   alertmanagerSpec:
@@ -18,6 +23,8 @@ prometheus:
     retention: 7d
     # Hard cap on TSDB size — Prometheus drops oldest blocks when reached.
     # Set below PVC capacity to leave headroom for the WAL.
+    # Uses SI units (GB) because Prometheus doesn't accept IEC (GiB);
+    # 4 GB ≈ 3.73 GiB, well within the 5 Gi PVC.
     retentionSize: "4GB"
     storageSpec:
       volumeClaimTemplate:
