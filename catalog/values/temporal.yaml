@@ -1,15 +1,48 @@
 # Helm values for Temporal workflow engine
 # Local-first defaults: single replica, uses cluster PostgreSQL
 
+# Each Temporal component runs as its own Deployment, so total cluster
+# footprint is the sum of all four services.
 server:
+  # Global replica count — applies to all four services (frontend, history,
+  # matching, worker). The chart has no per-service replicaCount key.
   replicaCount: 1
-  resources:
-    requests:
-      memory: 256Mi
-      cpu: 100m
-    limits:
-      memory: 1Gi
-      cpu: 500m
+
+  frontend:
+    resources:
+      requests:
+        memory: 128Mi
+        cpu: 50m
+      limits:
+        memory: 384Mi
+        cpu: 250m
+
+  history:
+    resources:
+      requests:
+        memory: 256Mi
+        cpu: 100m
+      limits:
+        memory: 768Mi
+        cpu: 500m
+
+  matching:
+    resources:
+      requests:
+        memory: 128Mi
+        cpu: 50m
+      limits:
+        memory: 384Mi
+        cpu: 250m
+
+  worker:
+    resources:
+      requests:
+        memory: 128Mi
+        cpu: 50m
+      limits:
+        memory: 384Mi
+        cpu: 250m
 
 web:
   replicaCount: 1
@@ -20,6 +53,12 @@ web:
     limits:
       memory: 256Mi
       cpu: 200m
+
+# Disable Elasticsearch — visibility uses PostgreSQL via the persistence section below.
+# The chart defaults to elasticsearch.enabled: true (3 replicas), which causes
+# CrashLooping schema jobs on clusters without an Elasticsearch deployment.
+elasticsearch:
+  enabled: false
 
 # Use cluster's PostgreSQL instance
 postgresql:
