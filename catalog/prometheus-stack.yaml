@@ -3,7 +3,7 @@ category: observability
 description: Kubernetes observability stack with Prometheus, Alertmanager, and Grafana
 repoURL: https://prometheus-community.github.io/helm-charts
 chart: kube-prometheus-stack
-targetRevision: "82.18.0"
+targetRevision: "84.1.2"
 namespace: observability
 enabled: false
 tier: 0-operators
