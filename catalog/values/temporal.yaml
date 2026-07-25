@@ -16,12 +16,17 @@ server:
   config:
     persistence:
       # Persistence store - uses cluster's PostgreSQL instance.
-      # createDatabase/manageSchema make the chart's schema job create the
-      # databases and run migrations (replaces the old schema.setup.enabled).
+      # manageSchema makes the chart's schema job run migrations (replaces the
+      # old schema.setup.enabled). createDatabase must stay false: the
+      # PostgreSQL bootstrap already creates both databases and the `temporal`
+      # role has no CREATEDB. PostgreSQL checks that privilege *before* the
+      # "already exists" check, so the schema job's create-database init
+      # container would fail with 42501 (which Temporal does not tolerate — it
+      # only ignores 42P04) and block manage-schema from ever running.
       datastores:
         default:
           sql:
-            createDatabase: true
+            createDatabase: false
             manageSchema: true
             pluginName: postgres12
             driverName: postgres12
@@ -32,7 +37,7 @@ server:
             password: temporal
         visibility:
           sql:
-            createDatabase: true
+            createDatabase: false
             manageSchema: true
             pluginName: postgres12
             driverName: postgres12
