@@ -4,6 +4,11 @@
 # Each Temporal component runs as its own Deployment, so total cluster
 # footprint is the sum of all four services.
 server:
+  # temporalio/server 1.30+ renders config via built-in sprig templating; the chart's
+  # 0.74.x defaults (dockerize template, no TEMPORAL_SERVER_CONFIG_FILE_PATH) crash-loop it.
+  setConfigFilePath: true
+  configMapsToMount: sprig
+
   # Global replica count — applies to all four services (frontend, history,
   # matching, worker). The chart has no per-service replicaCount key.
   replicaCount: 1
