@@ -3,6 +3,10 @@
   "extends": [
     "config:recommended"
   ],
+  "timezone": "Europe/Berlin",
+  "schedule": [
+    "before 6am on monday"
+  ],
   "customManagers": [
     {
       "customType": "regex",
