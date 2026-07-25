@@ -3,7 +3,7 @@ category: runtime
 description: Policy engine for agent RBAC and tool-level access control
 repoURL: https://open-policy-agent.github.io/kube-mgmt/charts
 chart: opa-kube-mgmt
-targetRevision: "10.0.0"
+targetRevision: "11.0.7"
 namespace: runtime
 enabled: false
 tier: 0-operators

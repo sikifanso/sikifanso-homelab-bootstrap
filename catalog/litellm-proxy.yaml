@@ -3,7 +3,7 @@ category: gateway
 description: LLM API gateway with multi-provider routing, cost tracking, and rate limiting
 repoURL: https://richardoc.github.io/litellm_helm-chart
 chart: litellm
-targetRevision: "0.0.4"
+targetRevision: "0.1.0"
 namespace: gateway
 enabled: false
 tier: 2-services
